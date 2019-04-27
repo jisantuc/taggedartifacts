@@ -1,4 +1,4 @@
-from pyrepro.pyrepro import Artifact
+from taggedartifacts.taggedartifacts import Artifact
 
 @Artifact(keyword='outpath', config={}, allow_dirty=True)
 def save_thing(outpath):

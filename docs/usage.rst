@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use pyrepro in a project::
+To use taggedartifacts in a project::
 
-    import pyrepro
+    import taggedartifacts

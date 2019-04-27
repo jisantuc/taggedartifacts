@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-"""Unit test package for pyrepro."""
+"""Unit test package for taggedartifacts."""

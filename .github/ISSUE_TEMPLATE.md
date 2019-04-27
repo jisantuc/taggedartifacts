@@ -1,4 +1,4 @@
-* pyrepro version:
+* taggedartifacts version:
 * Python version:
 * Operating System:
 

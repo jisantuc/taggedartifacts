@@ -30,7 +30,24 @@ Simple artifact versioning and caching for scientific workflows
 Features
 --------
 
-* TODO
+`pyrepro` exists to provide a simple interface for versioning functions that produce artifacts.
+An "artifact" could be anything -- maybe you have some sort of ETL pipeline that writes intermediate files,
+or you have a plotting function that writes a bunch of plots to disk, or you have a machine learning
+workflow that produces a bunch of model files somewhere. The purpose of `pyrepro` is to allow you
+to write normally -- give your output its regular name, like `plot.png` -- and automatically attach
+git commit and configuration information as part of the path.
+
+Example
+-------
+
+The following example shows how to use `pyrepro` to tag an output file with commit and config info:
+
+    from pyrepro import Artifact
+
+    @Artifact(keyword='outpath', config={}, allow_dirty=True)
+    def save_thing(outpath):
+        with open(outpath, 'w') as outf:
+            outf.write('good job')
 
 Credits
 -------

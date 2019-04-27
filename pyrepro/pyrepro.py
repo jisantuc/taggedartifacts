@@ -12,24 +12,27 @@ class Artifact(object):
             ['{}{}'.format(k, v) for k, v in config.items()]))
         self.allow_dirty = allow_dirty
         self.repo = Repository(discover_repository(os.getcwd()))
-        self.commitish = self.repo.describe(dirty_suffix='-dirty')
-        if '-dirty' in commitish and allow_dirty:
+        self.commitish = self.repo.describe(describe_strategy=2,
+                                            dirty_suffix='-dirty').replace(
+                                                '/', '-')
+        if '-dirty' in self.commitish and allow_dirty:
             logger.warn(
                 'Repository has unstaged changes. Creating artifacts, but marking them dirty.'
             )
-        elif '-dirty' in commitish:
+        elif '-dirty' in self.commitish:
             raise OSError(
                 'Refusing to create artifacts with a dirty repository. Current diff: %s',
                 self.repo.diff())
 
-    def __call__(self, f, *pos, **kw):
+    def __call__(self, f):
         def rewritten(*args, **kwargs):
-            output = kwargs.get(keyword) or ''
-            parts = list(os.path.split(output))
+            output = kwargs.get(self.keyword) or ''
+            parts = os.path.split(output)
             fname, ext = parts[-1].split(os.path.extsep)
-            with_info = fname + '-' + commitish + '-' + str(
-                hashed_config)[:10] + ext
-            kwargs[keyword] = os.path.join(*(parts[:-1] + [with_info]))
+            with_info = fname + '-' + self.commitish + '-' + str(
+                self.hashed_config)[:10] + os.path.extsep + ext
+            kwargs[self.keyword] = os.path.join(
+                *(list(parts)[:-1] + [with_info]))
             return f(*args, **kwargs)
 
         return rewritten

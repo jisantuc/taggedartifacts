@@ -3,7 +3,9 @@
 
 """The setup script."""
 
+import os
 from setuptools import setup, find_packages
+import sys
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -18,6 +20,21 @@ requirements = [
 setup_requirements = [ ]
 
 test_requirements = [ ]
+
+VERSION = '0.1.0'
+
+class VerifyVersionCommand(install):
+    """Custom command to verify that the git tag matches our version"""
+    description = 'verify that the git tag matches our version'
+
+    def run(self):
+        tag = os.getenv('CIRCLE_TAG')
+
+        if tag != VERSION:
+            info = "Git tag: {0} does not match the version of this app: {1}".format(
+                tag, VERSION
+            )
+            sys.exit(info)
 
 setup(
     author="James Santucci",
@@ -47,6 +64,9 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/jisantuc/pyrepro',
-    version='0.1.0',
+    version=VERSION,
     zip_safe=False,
+    cmdclass={
+        'verify': VerifyVersionCommand,
+    }
 )

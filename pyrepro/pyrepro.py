@@ -15,9 +15,8 @@ class Artifact(object):
         self.dirty_suffix = '-dirty'
         self.is_dirty = self.repo.diff().stats.files_changed > 0
         if self.is_dirty and self.allow_dirty:
-            logger.warn(
-                'Repository has unstaged changes. Creating artifacts, but marking them dirty.'
-            )
+            logger.warn('Repository has unstaged changes. '
+                        'Creating artifacts, but marking them dirty.')
         elif self.is_dirty:
             raise OSError(
                 'Refusing to create artifacts with a dirty repository.')

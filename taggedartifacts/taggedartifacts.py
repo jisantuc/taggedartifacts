@@ -16,10 +16,10 @@ class Artifact(object):
         self.is_dirty = self.repo.diff().stats.files_changed > 0
         if self.is_dirty and self.allow_dirty:
             logger.warn('Repository has unstaged changes. '
-                        'Creating artifacts, but marking them dirty.')
+                        'Creating or reading artifacts, but I make no promises.')
         elif self.is_dirty:
             raise OSError(
-                'Refusing to create artifacts with a dirty repository.')
+                'Refusing to create or read artifacts with a dirty repository.')
 
         self.commitish = str(self.repo.head.resolve().target)[:7] + (
             '-dirty' if self.is_dirty else '')

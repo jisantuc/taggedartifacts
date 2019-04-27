@@ -28,6 +28,9 @@ class Artifact(object):
     def __call__(self, f):
         def rewritten(*args, **kwargs):
             output = kwargs.get(self.keyword) or ''
+            if not output:
+                raise KeyError('%s was not in kwargs for decorated function',
+                               self.keyword)
             parts = os.path.split(output)
             fname, ext = parts[-1].split(os.path.extsep)
             with_info = fname + '-' + self.commitish + '-' + str(

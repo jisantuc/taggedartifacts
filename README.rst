@@ -42,12 +42,14 @@ Example
 
 The following example shows how to use `pyrepro` to tag an output file with commit and config info:
 
-    from pyrepro import Artifact
+.. codeblock:: python
 
+    from pyrepro import Artifact
     @Artifact(keyword='outpath', config={}, allow_dirty=True)
     def save_thing(outpath):
         with open(outpath, 'w') as outf:
             outf.write('good job')
+    
 
 Credits
 -------

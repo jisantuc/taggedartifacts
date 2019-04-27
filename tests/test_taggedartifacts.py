@@ -21,6 +21,11 @@ def func2(outpath):
     with open(outpath, 'w') as outf:
         outf.write('good job')
 
+@Artifact('inpath')
+def func_read(inpath):
+    with open(inpath, 'r') as inf:
+        return inf.read()
+
 
 class TestTaggedArtifacts(unittest.TestCase):
     """Tests for `taggedartifacts` package."""
@@ -35,11 +40,13 @@ class TestTaggedArtifacts(unittest.TestCase):
         for f in files:
             os.remove(f)
 
-    def test_create_file(self):
+    def test_pipeline(self):
         func(outpath='foo.txt')
         files = glob.glob('foo*.txt')
         assert len(files) == 1
         assert 'foo.txt' not in files
+        read = func_read(inpath='foo.txt')
+        assert read == 'good job'
 
     def test_assert_for_bad_keyword(self):
         with self.assertRaises(KeyError):

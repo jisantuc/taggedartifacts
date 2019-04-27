@@ -5,6 +5,7 @@
 
 import os
 from setuptools import setup, find_packages
+from setuptools.command.install import install
 import sys
 
 with open('README.rst') as readme_file:

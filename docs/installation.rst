@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install pyrepro, run this command in your terminal:
+To install taggedartifacts, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install pyrepro
+    $ pip install taggedartifacts
 
-This is the preferred method to install pyrepro, as it will always install the most recent stable release.
+This is the preferred method to install taggedartifacts, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for pyrepro can be downloaded from the `Github repo`_.
+The sources for taggedartifacts can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/jisantuc/pyrepro
+    $ git clone git://github.com/jisantuc/taggedartifacts
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/jisantuc/pyrepro/tarball/master
+    $ curl  -OL https://github.com/jisantuc/taggedartifacts/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/jisantuc/pyrepro
-.. _tarball: https://github.com/jisantuc/pyrepro/tarball/master
+.. _Github repo: https://github.com/jisantuc/taggedartifacts
+.. _tarball: https://github.com/jisantuc/taggedartifacts/tarball/master

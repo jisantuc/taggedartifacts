@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=pyrepro
+set SPHINXPROJ=taggedartifacts
 
 if "%1" == "" goto help
 

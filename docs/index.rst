@@ -1,4 +1,4 @@
-Welcome to pyrepro's documentation!
+Welcome to taggedartifacts's documentation!
 ======================================
 
 .. toctree::

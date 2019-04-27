@@ -22,7 +22,7 @@ setup_requirements = [ ]
 
 test_requirements = [ ]
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 class VerifyVersionCommand(install):
     """Custom command to verify that the git tag matches our version"""
@@ -58,13 +58,13 @@ setup(
     license="MIT license",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='pyrepro',
-    name='pyrepro',
-    packages=find_packages(include=['pyrepro']),
+    keywords='taggedartifacts',
+    name='taggedartifacts',
+    packages=find_packages(include=['taggedartifacts']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/jisantuc/pyrepro',
+    url='https://github.com/jisantuc/taggedartifacts',
     version=VERSION,
     zip_safe=False,
     cmdclass={

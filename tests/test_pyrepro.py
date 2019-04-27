@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Tests for `pyrepro` package."""
+"""Tests for `taggedartifacts` package."""
 
 import glob
 import os
 
 import unittest
 
-from pyrepro import Artifact
+from taggedartifacts import Artifact
 
 
 @Artifact('outpath')
@@ -22,8 +22,8 @@ def func2(outpath):
         outf.write('good job')
 
 
-class TestPyrepro(unittest.TestCase):
-    """Tests for `pyrepro` package."""
+class TestTaggedArtifacts(unittest.TestCase):
+    """Tests for `taggedartifacts` package."""
 
     def setUp(self):
         files = glob.glob('foo*.txt')

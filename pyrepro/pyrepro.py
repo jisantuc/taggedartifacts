@@ -12,14 +12,15 @@ class Artifact(object):
             ['{}{}'.format(k, v) for k, v in config.items()]))
         self.allow_dirty = allow_dirty
         self.repo = Repository(discover_repository(os.getcwd()))
-        self.commitish = self.repo.describe(describe_strategy=2,
-                                            dirty_suffix='-dirty').replace(
-                                                '/', '-')
-        if '-dirty' in self.commitish and allow_dirty:
+        self.dirty_suffix = '-dirty'
+        self.commitish = self.repo.describe(
+            describe_strategy=2,
+            dirty_suffix=self.dirty_suffix).replace('/', '-')
+        if self.dirty_suffix in self.commitish and allow_dirty:
             logger.warn(
                 'Repository has unstaged changes. Creating artifacts, but marking them dirty.'
             )
-        elif '-dirty' in self.commitish:
+        elif self.dirty_suffix in self.commitish:
             raise OSError(
                 'Refusing to create artifacts with a dirty repository. Current diff: %s',
                 self.repo.diff())

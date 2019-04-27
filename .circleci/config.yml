@@ -15,6 +15,11 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Install tox
+          command: |
+            pip install tox
+
       # run tests!
       # this example uses Django's built-in test-runner
       # other common Python testing frameworks include pytest and nose

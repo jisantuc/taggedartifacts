@@ -18,6 +18,8 @@ jobs:
       - run:
           name: Install tox
           command: |
+            python3 -m venv venv
+            . venv/bin/activate
             pip install tox
 
       # run tests!

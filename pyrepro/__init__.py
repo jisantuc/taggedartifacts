@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Top-level package for pyrepro."""
 
-from .pyrepro import Artifact
+from .pyrepro import Artifact  # noqa
 
 __author__ = """James Santucci"""
 __email__ = 'james.santucci@gmail.com'

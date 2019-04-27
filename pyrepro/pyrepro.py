@@ -13,17 +13,17 @@ class Artifact(object):
         self.allow_dirty = allow_dirty
         self.repo = Repository(discover_repository(os.getcwd()))
         self.dirty_suffix = '-dirty'
-        self.commitish = self.repo.describe(
-            describe_strategy=2,
-            dirty_suffix=self.dirty_suffix).replace('/', '-')
-        if self.dirty_suffix in self.commitish and allow_dirty:
+        self.is_dirty = self.repo.diff().stats.files_changed > 0
+        if self.is_dirty and self.allow_dirty:
             logger.warn(
                 'Repository has unstaged changes. Creating artifacts, but marking them dirty.'
             )
-        elif self.dirty_suffix in self.commitish:
+        elif self.is_dirty:
             raise OSError(
-                'Refusing to create artifacts with a dirty repository. Current diff: %s',
-                self.repo.diff())
+                'Refusing to create artifacts with a dirty repository.')
+
+        self.commitish = str(self.repo.head.resolve().target)[:7] + (
+            '-dirty' if self.is_dirty else '')
 
     def __call__(self, f):
         def rewritten(*args, **kwargs):

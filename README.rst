@@ -6,13 +6,8 @@ pyrepro
 .. image:: https://img.shields.io/pypi/v/pyrepro.svg
         :target: https://pypi.python.org/pypi/pyrepro
 
-.. image:: https://img.shields.io/travis/jisantuc/pyrepro.svg
-        :target: https://travis-ci.org/jisantuc/pyrepro
-
-.. image:: https://readthedocs.org/projects/pyrepro/badge/?version=latest
-        :target: https://pyrepro.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
+.. image:: https://circleci.com/gh/jisantuc/pyrepro.svg?style=svg
+    :target: https://circleci.com/gh/jisantuc/pyrepro
 
 .. image:: https://pyup.io/repos/github/jisantuc/pyrepro/shield.svg
      :target: https://pyup.io/repos/github/jisantuc/pyrepro/

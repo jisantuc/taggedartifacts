@@ -44,6 +44,43 @@ The following example shows how to use `pyrepro` to tag an output file with comm
         with open(outpath, 'w') as outf:
             outf.write('good job')
 
+    save_thing(outpath='foo.txt')
+
+The resulting file that would be created would be `foo-<commit>-<config-hash>.txt`, without having to
+litter string formats and fetching git commit info throughout the code.
+
+Why
+---
+
+It's really easy, once you start running a lot of experiments, to end up with a ton of output files
+produced at different times with names like `plot.png`, `plot2.png`, `plot-please-work.png`, etc.
+Later, you'll maybe want to show someone a plot, and they'll try to reproduce it, and you won't be
+able to tell them the state of the code when the plot was produced. That's not great! `pyrepro`
+offers one solution to this problem, where you can tell at a glance whether two files were produced
+by the same code and the same configuration.
+
+Isn't this just another workflow library
+----------------------------------------
+
+It's not! I promise.
+
+The workflow library ecosystem in python already has a lot of entrants, like Luigi_, Airflow_, 
+Pinball_, and probably many I haven't heard of. There are also experiment and data/code versioning systems
+around like DVC_, and older solutions to DAGs that understand how not to redo work, like `make`. `pyrepro`
+isn't really like any of those. It isn't aware of a DAG of all of your tasks at any point, and it doesn't
+know anything about data science workflows in general. It only knows about tagging some sort of file-based
+output with git commit and configuration information so that you can tell whether two artifacts produced
+potentially on different computers should match.
+
+As a result, you don't have to have a separate daemon running, you don't get anything like task
+distribution and parallelization for free, and you don't get a special CLI. `pyrepro` only attempts to
+solve one problem.
+
+.. _Luigi: https://github.com/spotify/luigi
+.. _Airflow: https://github.com/apache/airflow
+.. _Pinball: https://github.com/pinterest/pinball
+.. _DVC: https://github.com/iterative/dvc
+
 Credits
 -------
 

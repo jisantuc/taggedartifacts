@@ -22,7 +22,7 @@ setup_requirements = [ ]
 
 test_requirements = [ ]
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 class VerifyVersionCommand(install):
     """Custom command to verify that the git tag matches our version"""
